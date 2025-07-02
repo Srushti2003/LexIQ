@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Legal Document Intelligence Tool</title>
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Font Awesome for legal icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-title">
+      <i class="fas fa-gavel" style="margin-right:12px;"></i>
+      <span style="font-weight:800; letter-spacing:1px; font-size:2.1rem; vertical-align:middle;">LexIQ</span>
+      <i class="fas fa-balance-scale" style="margin-left:12px; margin-right:10px;"></i>
+      <i class="fas fa-book" style="font-size:1.3rem; color:#2980B9; vertical-align:middle;"></i>
+    </div>
+    <div class="header-tagline">From Legal Complexity to Clarity.</div>
+  </header>
+  <main class="container">
+    <!-- 1. Case Search Box -->
+    <section class="card">
+      <h3>🔎 Quick Case Search</h3>
+      <form id="searchForm">
+        <input type="text" id="queryInput" placeholder="e.g., Section 420 IPC from 2020 to 2023" required />
+        <button type="submit">Search</button>
+      </form>
+      <div id="results"></div>
+    </section>
+
+    <!-- 2. Upload Legal Document for Summarization -->
+    <section class="card">
+      <h3>📤 Upload Legal Document for Summarization</h3>
+      <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="fileInput" accept=".txt,.pdf,.docx" required>
+        <button type="submit">Upload & Summarize</button>
+        <!-- Optional: Bullet/Paragraph toggle -->
+        <label class="subtext" style="margin-left:16px;">
+          <input type="checkbox" id="summaryStyleToggle" disabled> Bullet / Paragraph (coming soon)
+        </label>
+      </form>
+      <div id="uploadSummaryOutput"></div>
+      <div class="output-actions">
+        <button id="summaryDownloadBtn" class="download-btn" disabled>📥 Download as PDF</button>
+        <button id="summaryCopyBtn" class="copy-btn" disabled>📋 Copy to Clipboard</button>
+      </div>
+    </section>
+
+    <!-- 3. Section & Act Tagging -->
+    <section class="card">
+      <h3>🏷️ Section & Act Tagging</h3>
+      <form id="analyzeForm" enctype="multipart/form-data">
+        <input type="file" id="analyzeFileInput" accept=".txt,.pdf,.docx" required>
+        <button type="submit">Analyze</button>
+      </form>
+      <div id="analyzeResults"></div>
+      <div class="output-actions">
+        <button id="analyzeDownloadBtn" class="download-btn" disabled>📥 Download as PDF</button>
+        <button id="analyzeCopyBtn" class="copy-btn" disabled>📋 Copy to Clipboard</button>
+      </div>
+    </section>
+
+    <!-- 4. Legal Argument Generator -->
+    <section class="card">
+      <h3>⚖️ Legal Argument Generator</h3>
+      <form id="argumentForm">
+        <textarea id="argumentInput" rows="4" placeholder="Enter case facts or sections involved..." required style="width:100%;margin-bottom:10px;"></textarea>
+        <button type="submit">Generate Arguments</button>
+      </form>
+      <div id="argumentResults"></div>
+      <div class="output-actions">
+        <button id="argumentDownloadBtn" class="download-btn" disabled>📥 Download as PDF</button>
+        <button id="argumentCopyBtn" class="copy-btn" disabled>📋 Copy to Clipboard</button>
+      </div>
+    </section>
+
+    <!-- 5. Case Trend Analytics -->
+    <section class="card">
+      <h3>📊 Case Trend Analytics</h3>
+      <form id="trendForm">
+        <input type="text" id="trendInput" placeholder="Enter section or law (e.g., Section 420 IPC)" required style="width:70%;margin-bottom:10px;">
+        <button type="submit">Show Trends</button>
+      </form>
+      <div id="trendResults" style="margin-top:20px;"></div>
+      <div class="output-actions">
+        <button id="trendDownloadBtn" class="download-btn" disabled>📥 Download as PDF</button>
+        <button id="trendCopyBtn" class="copy-btn" disabled>📋 Copy to Clipboard</button>
+      </div>
+    </section>
+
+    <!-- 6. Client Brief Generator -->
+    <section class="card">
+      <h3>👩‍⚖️ Client Brief Generator</h3>
+      <form id="briefForm" enctype="multipart/form-data">
+        <input type="file" id="briefFileInput" accept=".txt,.pdf,.docx" required>
+        <button type="submit">Generate Client Brief</button>
+      </form>
+      <div id="briefResults"></div>
+      <div class="output-actions">
+        <button id="briefDownloadBtn" class="download-btn" disabled>📥 Download as PDF</button>
+        <button id="briefCopyBtn" class="copy-btn" disabled>📋 Copy to Clipboard</button>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="main-footer">
+    © 2025 Legal Case Assistant | Built with ❤️ by Srushti
+  </footer>
+</body>
+</html>
