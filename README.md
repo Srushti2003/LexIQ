@@ -1,4 +1,4 @@
-⚖️ LexIQ – From Legal Complexity to Clarity
+# ⚖️ LexIQ – From Legal Complexity to Clarity
 
 **LexIQ** is an AI-powered legal assistant platform that helps legal professionals simplify long judgments, tag IPC/CrPC sections, generate legal arguments, analyze legal trends, and create client-friendly briefs — all in one place.
 
